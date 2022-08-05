@@ -15,7 +15,7 @@
         "description": "API de teste"
       },
       {
-        "url": "https://api-elgeladonpaletas.herokuapp.com/paletas",
+        "url": "https://api-myguitar.herokuapp.com/bandas/",
         "description": "API de produção"
       }
     ],
