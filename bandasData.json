@@ -1,0 +1,27 @@
+[
+    {
+      
+      "nome": "Alma Negra",
+      "estilo":"Heavy Metal",
+      "decricao": "Banda Formada em Curitiba no ano de 2012, som autoral",
+      "foto": "assets/images/almanegra.jpe"
+      
+    },
+  
+    {
+      
+      "nome": "Sem Futuro",
+      "estilo":"Street Punk 77",
+      "decricao": "Banda Formada em Curitiba no ano de 2007, som autoral",
+      "foto": "assets/images/semfuturo.jpg"
+    },
+  
+    {
+      
+      "nome": "Tripanossoma",
+      "estilo": "Metal Punk",
+      "decricao": "Banda Formada em  Curitiba no ano de 2003, som autoral",
+      "foto": "assets/images/tripa.jpg"
+    }
+  ]
+  
