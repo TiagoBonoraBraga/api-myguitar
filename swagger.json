@@ -1,0 +1,217 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "API My Guitar",
+      "description": "API para CRUD de Bandas",
+      "termsOfService": "",
+      "contact": {
+        "email": "ogait.desenvolvedor.jr@gmail.com"
+      },
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3001/bandas",
+        "description": "API de teste"
+      },
+      {
+        "url": "https://api-elgeladonpaletas.herokuapp.com/paletas",
+        "description": "API de produção"
+      }
+    ],
+    "paths": {
+      "/all-bandas": {
+        "get": {
+          "summary": "Lista de todas as bandas",
+          "description": "Rota responsavel por listar tds as bandas",
+          "tags": ["Bandas"],
+          "responses": {
+            "404": {
+              "description": "Not found"
+            },
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Bandas"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/one-banda/{id}": {
+        "get": {
+          "summary": "Busca uma banda pelo ID",
+          "description": "Rota responsável por buscar uma banda pelo ID",
+          "tags": ["Bandas"],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Id da banda para a busca",
+              "required": true
+            }
+          ],
+          "responses": {
+            "400": {
+              "description": "Bad request"
+            },
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Bandas"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/create-banda": {
+        "post": {
+          "summary": "Cadastrar uma banda",
+          "description": "Rota responsavel por cadastrar bandas",
+          "tags": ["Bandas"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bandas"
+                },
+                "examples": {
+                  "Paletas": {
+                    "value": {
+                      "nome": "Alma Negra",
+                      "estilo": "Heavy Metal",
+                      "descricao": "Banda Formada em Curitiba no ano de 2012, som autoral",
+                      "foto": "./assets/imagens/almanegra.jpg"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "400": {
+              "description": "Bad request"
+            },
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Bandas"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/update-banda/{id}": {
+        "put": {
+          "summary": "Editar uma banda pelo ID",
+          "description": "Rota responsavel por editar uma banda pelo ID",
+          "tags": ["Bandas"],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Id da banda para a busca",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bandas"
+                },
+                "examples": {
+                  "Paletas": {
+                    "value": {
+                      "nome": "Sem Futuro",
+                      "estilo": "Street Punk 77",
+                      "descricao": "Banda Formada em Curitiba no ano de 2007, som autoral",
+                      "foto": "./assets/imagens/semfuturo.jpg"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "400": {
+              "description": "Bad request"
+            },
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Bandas"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/delete-banda/{id}": {
+          "delete":{
+              "summary": "Apagar uma banda pelo ID",
+              "description": "Rota responsavel por apagar uma banda pelo ID",
+              "tags":["Bandas"],
+              "parameters":[
+                  {
+                      "name":"id",
+                      "in":"path",
+                      "description":"Id da banda de deleção",
+                      "required":true
+                  }
+              ],
+              "responses":{
+                  "400":{
+                      "description":"Bad request"
+                  },
+                  "200":{
+                      "description":"Ok"
+                  }
+              }
+          }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Bandas": {
+          "type": "object",
+          "properties": {
+            "nome": {
+              "type": "string"
+            },
+            "estilo": {
+              "type": "string"
+            },
+            "descricao": {
+              "type": "string"
+            },
+            "foto": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+  
