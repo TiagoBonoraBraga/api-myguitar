@@ -1,13 +1,13 @@
 const Banda = require('../models/Banda');
-const Bandas = require('../models/Banda');
+
 
 const findAllBandasService = async () => {
-  const allBandas = await Bandas.find();
+  const allBandas = await Banda.find();
   return allBandas;
 };
 
 const findByIdBandaService = async (idParam) => {
-  const oneBanda = await Bandas.findById(idParam);
+  const oneBanda = await Banda.findById(idParam);
   return oneBanda;
 };
 
@@ -17,12 +17,12 @@ const createBandaService = async (newBanda) => {
 };
 
 const updateBandaService = async (idParam, editBanda) => {
-  const updateBanda = await Bandas.findByIdAndUpdate(idParam, editBanda).setOptions({ returnOriginal: false});
+  const updateBanda = await Banda.findByIdAndUpdate(idParam, editBanda).setOptions({ returnOriginal: false});
   return updateBanda;
 };
 
 const deleteBandaService = async (idParam) => {
-  return await Bandas.findByIdAndDelete(idParam);
+  return await Banda.findByIdAndDelete(idParam);
 };
 
 module.exports = {

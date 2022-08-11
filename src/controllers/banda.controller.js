@@ -1,8 +1,8 @@
 const mongoose = require('mongoose'); 
-const bandasService = require('../services/banda.service'); 
+const BandasService = require('../services/banda.service'); 
 
 const findAllBandasController = async (req, res) => {
-  const allBandas = await bandasService.findAllBandasService(); 
+  const allBandas = await BandasService.findAllBandasService(); 
 
   if (allBandas.length == 0) {
     return res.status(404).send({ message: 'Não existe banda cadastradas!' });
@@ -24,14 +24,14 @@ const findByIdBandaController = async (req, res) => {
 
 const createBandaController = async (req, res) => {
   const banda = req.body;
-  const newBanda = await bandasService.createBandaService(banda);
+  const newBanda = await BandasService.createBandaService(banda);
   res.status(201).send(newBanda);
 };
 
 const updateBandaController = async (req, res) => {
   const idParam = req.params.id;
   const editBanda = req.body;
-  const updatedBanda = await bandasService.updateBandaService(
+  const updatedBanda = await BandasService.updateBandaService(
     idParam,
     editBanda,
   );
@@ -40,7 +40,7 @@ const updateBandaController = async (req, res) => {
 
 const deleteBandaController = async (req, res) => {
   const idParam = req.params.id;
-  await bandasService.deleteBandaService(idParam);
+  await BandasService.deleteBandaService(idParam);
   res.send({ message: 'Banda deletada com sucesso!' });
 };
 
